@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaliro: Cloud Rush — Privacy Archive</title>
+<style>
+:root{--sky:#7bdcff;--deep:#142b55;--gold:#ffd76a;--panel:rgba(10,27,60,.82)}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:linear-gradient(#63cafa,#d8f7ff);color:#fff;min-height:100vh}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px clamp(14px,4vw,42px);color:var(--deep)}
+.logo{font-weight:950;font-size:clamp(18px,3vw,27px);letter-spacing:.5px}.logo span{color:#0878bd}
+nav{display:flex;gap:10px;flex-wrap:wrap}nav a{color:var(--deep);font-weight:750;text-decoration:none;padding:8px 12px;border-radius:20px}nav a:hover{background:#ffffff88}
+main{width:min(1050px,94vw);margin:26px auto 35px}
+.hero{text-align:center;color:var(--deep);margin:8px 0 16px}.hero h1{font-size:clamp(30px,6vw,54px);margin:4px 0;line-height:1.05}.hero p{margin:8px auto;max-width:600px}
+.pill{background:#ffffff20;border:1px solid #ffffff30;border-radius:999px;padding:7px 13px;font-weight:800}
+button{border:0;border-radius:999px;padding:11px 20px;font-size:15px;font-weight:850;cursor:pointer;background:var(--gold);color:#382b16;box-shadow:0 4px 0 #d59d32;transition:transform .12s}
+button:hover{transform:translateY(-1px)}button:active{transform:translateY(2px);box-shadow:0 2px 0 #d59d32}
+button.secondary{background:#eafaff;color:var(--deep);box-shadow:0 4px 0 #a5d8e8}
+.privacy{margin-top:22px;background:linear-gradient(145deg,#0d244a,#183e6c);color:#f1f8ff;border:2px solid #77d9ff;border-radius:22px;padding:clamp(14px,3vw,28px);box-shadow:0 14px 35px #10385a55}.privacy{margin-top:16px}.privacy h2{margin-top:0}.privacy details{border-top:1px solid #c8e3ef;padding:12px 0}.privacy summary{font-weight:800;cursor:pointer}.privacy p,.privacy li{line-height:1.6}.privacy a{color:#0878bd}
+footer{text-align:center;color:#244d70;padding:12px 16px 26px;font-size:13px}
+@media(max-width:650px){header{align-items:flex-start;flex-direction:column}.pill{padding:6px 10px;font-size:13px}}
+
+.privacy{margin-top:22px;background:linear-gradient(145deg,#0d244a,#183e6c);color:#f1f8ff;border:2px solid #77d9ff;border-radius:22px;padding:clamp(14px,3vw,28px);box-shadow:0 14px 35px #10385a55}
+.privacy-banner{display:flex;align-items:center;gap:16px;padding:8px 0 20px;border-bottom:1px solid #8edfff55}
+.privacy-icon{font-size:42px;width:72px;height:72px;display:grid;place-items:center;flex-shrink:0;background:#7adfff22;border:1px solid #8edfff88;border-radius:18px}
+.privacy h2{color:#fff;margin:3px 0;font-size:clamp(23px,4vw,34px)}.privacy-banner p{margin:0;color:#bfe9ff}
+.eyebrow{font-size:10px;font-weight:950;letter-spacing:2px;color:#70ddff}
+.policy-stamp{margin-left:auto;flex-shrink:0;text-align:center;font-size:10px;letter-spacing:1px;color:#bfe9ff;border:1px solid #72dfff;border-radius:10px;padding:9px}
+.policy-stamp strong{font-size:12px;color:#ffe18a}
+.privacy-intro{padding:18px 0 10px;line-height:1.7}.privacy-intro p{margin:10px 0}
+.section-chip{display:inline-block;background:#ffd76a;color:#29314b;font-size:11px;font-weight:950;letter-spacing:1px;border-radius:6px;padding:6px 10px}
+.small-note{font-size:12px;color:#a8cce9}
+.policy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.policy-card{background:#f2f9ff;color:#183253;border:1px solid #b8e7fa;border-radius:14px;padding:17px;box-shadow:0 5px 0 #0b1a36}
+.policy-card p,.policy-card li{line-height:1.68;font-size:14px}.policy-card p{margin:9px 0}.policy-card ul{padding-left:20px;margin:8px 0}
+.policy-card a{color:#006db4;font-weight:750;overflow-wrap:anywhere}
+.policy-card-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px}
+.policy-card-head>span{display:grid;place-items:center;min-width:32px;height:30px;background:#d7f3ff;color:#0874ac;border:1px solid #9cdef6;border-radius:8px;font-weight:950;font-size:12px}
+.policy-card h3{font-size:16px;line-height:1.35;margin:4px 0 0;color:#12335a}
+.email-chip{display:inline-block;margin-top:4px;padding:9px 12px;border-radius:8px;background:#dff5ff;border:1px solid #9adcf7;text-decoration:none}
+.service-badge{display:inline-block;background:#dff5ff;border:1px solid #a7def5;border-radius:9px;padding:10px 12px;font-weight:850;color:#17456a}
+.policy-footer{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:16px;padding-top:13px;border-top:1px solid #8edfff55;font-size:10px;font-weight:850;letter-spacing:1px;color:#9cc9e9}
+@media(max-width:650px){.policy-grid{grid-template-columns:1fr}.privacy-banner{align-items:flex-start;flex-wrap:wrap}.policy-stamp{margin-left:0}.privacy-icon{width:56px;height:56px;font-size:32px}.policy-card{padding:14px}}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">☁ KALIRO <span>PRIVACY ARCHIVE</span></div>
+  <nav><a href="#privacy">Hồ sơ quyền riêng tư</a><a href="#contact">Liên hệ</a></nav>
+</header>
+<main>
+<section class="privacy" id="privacy">
+    <div class="privacy-banner">
+      <div class="privacy-icon">🛡️</div>
+      <div>
+        <div class="eyebrow">CODEX • PLAYER SAFETY ARCHIVE</div>
+        <h2>Hồ sơ quyền riêng tư</h2>
+        <p>Chính sách quyền riêng tư — Kaliro: Cloud Rush</p>
+      </div>
+      <div class="policy-stamp">HIỆU LỰC<br><strong>27.10.2026</strong></div>
+    </div>
+    <div class="privacy-intro">
+      <span class="section-chip">📜 TÀI LIỆU HỆ THỐNG</span>
+      <p>Chính sách này áp dụng cho ứng dụng di động <strong>Kaliro: Cloud Rush</strong> và các dịch vụ liên quan do <strong>GoneWinds</strong> vận hành (gọi chung là “Ứng dụng”). Trong tài liệu này, GoneWinds được gọi là “Nhà cung cấp dịch vụ”.</p>
+      <p class="small-note">Giao diện được thiết kế theo phong cách game; nội dung dưới đây giữ đầy đủ các mục và thông tin của tệp Privacy.txt, được chuyển ngữ sang tiếng Việt.</p>
+    </div>
+    <div class="policy-grid">
+      <article class="policy-card">
+        <div class="policy-card-head"><span>01</span><h3>📡 Thu thập và sử dụng thông tin</h3></div>
+        <p>Ứng dụng thu thập thông tin khi bạn tải xuống và sử dụng. Thông tin này có thể bao gồm:</p>
+        <ul><li>Địa chỉ Giao thức Internet (IP) của thiết bị.</li><li>Các trang trong Ứng dụng mà bạn truy cập, ngày và giờ truy cập, thời gian dành cho những trang đó.</li><li>Thời gian sử dụng Ứng dụng.</li><li>Hệ điều hành di động bạn sử dụng.</li></ul>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>02</span><h3>🍪 Cookie và công nghệ theo dõi</h3></div>
+        <p>Ứng dụng hoặc SDK của bên thứ ba có thể sử dụng cookie, SDK, pixel và các công nghệ tương tự để hỗ trợ chức năng, phân tích hoặc cung cấp dịch vụ. Khi pháp luật hiện hành yêu cầu, Nhà cung cấp dịch vụ sẽ xin sự đồng ý trước khi sử dụng các công nghệ theo dõi không thiết yếu.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>03</span><h3>🧭 Quyền của bạn</h3></div>
+        <p>Bạn có thể yêu cầu truy cập, chỉnh sửa hoặc xóa dữ liệu cá nhân mà Nhà cung cấp dịch vụ lưu giữ. Để thực hiện các quyền này hoặc rút lại sự đồng ý khi việc xử lý dựa trên sự đồng ý, hãy liên hệ:</p>
+        <a class="email-chip" href="mailto:pthoa0418@gmail.com">✉ pthoa0418@gmail.com</a>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>04</span><h3>🇺🇸 Quyền riêng tư tại California (CCPA/CPRA)</h3></div>
+        <p>Nếu bạn là cư dân California, bạn có quyền biết thông tin cá nhân nào được thu thập; yêu cầu xóa thông tin cá nhân; từ chối việc bán hoặc chia sẻ thông tin cá nhân; và không bị phân biệt đối xử khi thực hiện các quyền này. Để thực hiện quyền theo CCPA/CPRA, hãy liên hệ <a href="mailto:pthoa0418@gmail.com">pthoa0418@gmail.com</a>.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>05</span><h3>📨 Thông tin và liên lạc</h3></div>
+        <p>Nhà cung cấp dịch vụ có thể sử dụng thông tin bạn cung cấp để gửi thông tin quan trọng, thông báo bắt buộc và, khi được pháp luật cho phép, thông tin tiếp thị.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>06</span><h3>🪪 Thông tin nhận dạng cá nhân</h3></div>
+        <p>Để mang lại trải nghiệm tốt hơn khi sử dụng Ứng dụng, Nhà cung cấp dịch vụ có thể yêu cầu bạn cung cấp một số thông tin có thể nhận dạng cá nhân. Thông tin được yêu cầu sẽ được lưu giữ và sử dụng như mô tả trong chính sách quyền riêng tư này.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>07</span><h3>🔗 Quyền truy cập của bên thứ ba</h3></div>
+        <p>Chỉ dữ liệu tổng hợp, đã ẩn danh mới được định kỳ truyền đến các dịch vụ bên ngoài nhằm hỗ trợ Nhà cung cấp dịch vụ cải thiện Ứng dụng và dịch vụ. Nhà cung cấp dịch vụ có thể chia sẻ thông tin của bạn với bên thứ ba theo những cách được mô tả trong tuyên bố quyền riêng tư này.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>08</span><h3>🌐 Chuyển dữ liệu quốc tế</h3></div>
+        <p>Nhà cung cấp dịch vụ hoặc các nhà cung cấp dịch vụ bên thứ ba có thể chuyển dữ liệu cá nhân đến các quốc gia ngoài quốc gia cư trú của bạn, bao gồm cả bên ngoài Khu vực Kinh tế châu Âu (EEA). Khi luật hiện hành yêu cầu biện pháp bảo vệ cho việc chuyển dữ liệu quốc tế, Nhà cung cấp dịch vụ sẽ sử dụng cơ chế phù hợp.</p>
+        <p>Các cơ chế có thể được áp dụng gồm:</p>
+        <ul><li>Điều khoản hợp đồng tiêu chuẩn (SCC) được Ủy ban châu Âu phê duyệt.</li><li>Quyết định công nhận mức độ bảo vệ đầy đủ.</li><li>Sự đồng ý của bạn, khi được yêu cầu và pháp luật cho phép.</li></ul>
+        <p>Luật bảo vệ dữ liệu ở các quốc gia có thể khác nhau. Khi pháp luật yêu cầu, Nhà cung cấp dịch vụ sẽ áp dụng các biện pháp bảo vệ thích hợp và xin mọi sự đồng ý cần thiết cho việc chuyển dữ liệu.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>09</span><h3>🧩 Dịch vụ bên thứ ba</h3></div>
+        <p>Ứng dụng sử dụng các dịch vụ bên thứ ba có chính sách quyền riêng tư riêng về việc xử lý thông tin. Chính sách gốc liệt kê dịch vụ sau:</p>
+        <div class="service-badge">▶ Google Play Services</div>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>10</span><h3>⚖️ Trường hợp tiết lộ thông tin</h3></div>
+        <p>Nhà cung cấp dịch vụ có thể tiết lộ thông tin do người dùng cung cấp và thông tin được thu thập tự động:</p>
+        <ul><li>Khi pháp luật yêu cầu, chẳng hạn để tuân thủ trát đòi hầu tòa hoặc quy trình pháp lý tương tự.</li><li>Khi tin tưởng một cách thiện chí rằng việc tiết lộ là cần thiết để bảo vệ quyền lợi, sự an toàn của Nhà cung cấp dịch vụ hoặc người khác, điều tra gian lận hoặc đáp ứng yêu cầu của chính phủ.</li><li>Cho các nhà cung cấp dịch vụ đáng tin cậy làm việc thay mặt mình, không sử dụng độc lập thông tin được tiết lộ và đã đồng ý tuân thủ tuyên bố quyền riêng tư này.</li></ul>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>11</span><h3>🚪 Quyền từ chối thu thập dữ liệu</h3></div>
+        <p>Bạn có thể ngăn việc thu thập thông tin tiếp theo từ thiết bị di động bằng cách gỡ cài đặt Ứng dụng. Việc gỡ cài đặt sẽ ngừng Ứng dụng thu thập dữ liệu từ thiết bị, nhưng không tự động xóa thông tin đã được truyền đến Nhà cung cấp dịch vụ hoặc bên thứ ba.</p>
+        <p>Để yêu cầu xóa dữ liệu cá nhân, rút lại sự đồng ý hoặc thực hiện các quyền của mình, hãy liên hệ <a href="mailto:pthoa0418@gmail.com">pthoa0418@gmail.com</a>.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>12</span><h3>🗄️ Chính sách lưu giữ dữ liệu</h3></div>
+        <p>Nhà cung cấp dịch vụ lưu giữ dữ liệu cá nhân dựa trên mức độ cần thiết cho các mục đích đã nêu:</p>
+        <ul><li><strong>Dữ liệu do người dùng cung cấp:</strong> trong thời gian bạn sử dụng Ứng dụng cộng thêm 12 tháng, trừ khi pháp luật yêu cầu lưu lâu hơn.</li><li><strong>Dữ liệu tự động thu thập:</strong> tối đa 24 tháng kể từ khi thu thập, trừ khi cần lưu lâu hơn để tuân thủ pháp luật.</li><li><strong>Dữ liệu tổng hợp và ẩn danh:</strong> lưu giữ vô thời hạn vì không còn nhận dạng được bạn.</li><li><strong>Dữ liệu cần cho việc tuân thủ pháp luật:</strong> lưu giữ trong thời gian pháp luật hiện hành yêu cầu.</li></ul>
+        <p>Bạn có thể yêu cầu xóa dữ liệu cá nhân, tùy thuộc vào nghĩa vụ pháp lý phải lưu giữ. Nếu muốn xóa dữ liệu do người dùng cung cấp qua Ứng dụng, hãy liên hệ <a href="mailto:pthoa0418@gmail.com">pthoa0418@gmail.com</a>. Lưu ý rằng một số dữ liệu do người dùng cung cấp có thể cần thiết để Ứng dụng hoạt động đúng chức năng.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>13</span><h3>🧒 Trẻ em</h3></div>
+        <p>Ứng dụng không dành cho trẻ em dưới 16 tuổi, hoặc độ tuổi cao hơn nếu pháp luật hiện hành quy định. Nhà cung cấp dịch vụ không cố ý yêu cầu dữ liệu từ trẻ em hoặc tiếp thị cho trẻ em.</p>
+        <p>Khi pháp luật yêu cầu sự đồng ý của cha mẹ hoặc người giám hộ, Ứng dụng không dành cho việc sử dụng nếu chưa có sự đồng ý đó. Nhà cung cấp dịch vụ không cố ý thu thập thông tin nhận dạng cá nhân của trẻ dưới 16 tuổi trái pháp luật. Nếu phát hiện trẻ đã cung cấp thông tin cá nhân, Nhà cung cấp dịch vụ sẽ xóa thông tin đó khỏi máy chủ ngay lập tức. Nếu là cha mẹ hoặc người giám hộ và biết trẻ đã cung cấp thông tin cá nhân, vui lòng liên hệ <a href="mailto:pthoa0418@gmail.com">pthoa0418@gmail.com</a> để Nhà cung cấp dịch vụ thực hiện các biện pháp cần thiết.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>14</span><h3>🔐 Bảo mật</h3></div>
+        <p>Nhà cung cấp dịch vụ quan tâm đến việc bảo vệ tính bảo mật của thông tin. Nhà cung cấp dịch vụ áp dụng các biện pháp bảo vệ về mặt vật lý, điện tử và quy trình đối với thông tin được xử lý và lưu giữ.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>15</span><h3>🚨 Thông báo vi phạm dữ liệu</h3></div>
+        <p>Nếu xảy ra vi phạm dữ liệu ảnh hưởng đến dữ liệu cá nhân của bạn, Nhà cung cấp dịch vụ sẽ thông báo theo các yêu cầu pháp luật hiện hành, bao gồm khi cần thiết việc cung cấp thông tin về bản chất của vi phạm và các bước đang được thực hiện để xử lý.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>16</span><h3>🔄 Thay đổi chính sách</h3></div>
+        <p>Nhà cung cấp dịch vụ có thể cập nhật Chính sách quyền riêng tư theo thời gian. Những thay đổi quan trọng sẽ được thông báo bằng cách đăng chính sách đã cập nhật kèm ngày hiệu lực. Khi pháp luật yêu cầu, Nhà cung cấp dịch vụ sẽ xin sự đồng ý của bạn đối với những thay đổi quan trọng trước khi chúng có hiệu lực.</p>
+        <p>Các phiên bản trước của Chính sách quyền riêng tư sẽ được lưu giữ và cung cấp theo yêu cầu bằng cách liên hệ <a href="mailto:pthoa0418@gmail.com">pthoa0418@gmail.com</a>.</p>
+      </article>
+      <article class="policy-card">
+        <div class="policy-card-head"><span>17</span><h3>✅ Sự đồng ý của bạn</h3></div>
+        <p>Khi việc xử lý dữ liệu dựa trên sự đồng ý, bạn thể hiện sự đồng ý bằng cách chủ động chọn tham gia tính năng hoặc hành động liên quan. Bạn có thể rút lại sự đồng ý bất cứ lúc nào mà không ảnh hưởng đến việc xử lý đã diễn ra trước khi rút lại. Việc xử lý dựa trên các căn cứ hợp pháp khác được thực hiện như mô tả trong chính sách này.</p>
+      </article>
+      <article class="policy-card contact-card" id="contact">
+        <div class="policy-card-head"><span>18</span><h3>📮 Liên hệ với chúng tôi</h3></div>
+        <p>Nếu bạn có câu hỏi về quyền riêng tư khi sử dụng Ứng dụng hoặc về các hoạt động xử lý thông tin, vui lòng liên hệ Nhà cung cấp dịch vụ qua email:</p>
+        <a class="email-chip" href="mailto:pthoa0418@gmail.com">✉ pthoa0418@gmail.com</a>
+      </article>
+    </div>
+    <div class="policy-footer"><span>ARCHIVE ID: KCR-PRIVACY</span><span>NGÀY HIỆU LỰC: 27/10/2026</span></div>
+  </section>
+</main>
+<footer>© Kaliro: Cloud Rush • Privacy Archive • Tài liệu quyền riêng tư</footer>
+</body>
+</html>
